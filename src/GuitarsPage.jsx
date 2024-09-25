@@ -1,6 +1,7 @@
 import { GuitarsIndex } from './GuitarsIndex';
-import axios from 'axios'
-import { useState, useEffect } from 'react'
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { GuitarsNew } from './GuitarsNew';
 
 
 export function GuitarsPage () { 
@@ -14,11 +15,20 @@ export function GuitarsPage () {
     })
   }
 
+  const guitarCreate = ( params, successCallback) => {
+    console.log("guitarCreate", params);
+    axios.post('http://localhost:3000/guitars.json', params).then((response) => {
+      setGuitars([...guitars, response.data]);
+      successCallback();
+    });
+  }
+
   useEffect( guitarIndex, [] );
 
   return (
     <main>
       <GuitarsIndex guitars={guitars}/>
+      <GuitarsNew onCreate={guitarCreate}/>
     </main>
   );
 }
