@@ -2,10 +2,15 @@ import { GuitarsIndex } from './GuitarsIndex';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { GuitarsNew } from './GuitarsNew';
+import { Modal } from './Modal'
+import { GuitarsShow } from './GuitarsShow'
 
 
 export function GuitarsPage () { 
   const [ guitars, setGuitars] = useState([]);
+  const [ isGuitarsShowVisible, setIsGuitarsShowVisible ] = useState(false);
+  const [ currentGuitar, setCurrentGuitar ] = useState({});
+
 
   const guitarIndex = () => { 
     console.log('guitarIndex');
@@ -23,12 +28,43 @@ export function GuitarsPage () {
     });
   }
 
+  const guitarShow = (guitar) => {
+    console.log('guitarShow', guitar);
+    setIsGuitarsShowVisible(true);
+    setCurrentGuitar(guitar); 
+  }
+
+  const guitarClose = () => { 
+    console.log('guitarClose');
+    setIsGuitarsShowVisible(false);
+  };
+
+  const guitarUpdate = (id, params, successCallback ) => { 
+    console.log('guitarUpdate', params);
+    axios.patch(`http://localhost:3000/guitars/${id}.json`, params).then((response) => { 
+      setGuitars(
+        guitars.map((guitar) => { 
+          if (guitar.id === response.data.id) { 
+            return response.data;
+          } else { 
+            return guitar;
+          }
+        })
+      );
+      successCallback();
+      guitarClose();
+    });
+  }
+
   useEffect( guitarIndex, [] );
 
   return (
     <main>
-      <GuitarsIndex guitars={guitars}/>
+      <GuitarsIndex guitars={guitars} onShow={guitarShow}/>
       <GuitarsNew onCreate={guitarCreate}/>
+      <Modal show={isGuitarsShowVisible} onClose={guitarClose}>
+        <GuitarsShow guitar={currentGuitar} onUpdate={guitarUpdate}/>
+      </Modal>
     </main>
   );
 }
