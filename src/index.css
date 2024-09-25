@@ -2,6 +2,79 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(182, 208, 208);
+}
+
+.home {
+  color: white;
+  text-decoration: none;
+}
+
+.home:hover {
+  color: rgb(197, 200, 197)
+}
+
+
+header {
+  margin: 0 auto;
+  text-align: center;
+  background-color: black;
+  height: 50px;
+  padding-top: 25px;
+}
+
+.title {
+  margin: 0 auto;
+  text-align: center;
+}
+
+
 .image {
-  width: 50%;
+  width: 500px;
+  height: 700px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.index {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.create {
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.name,
+.price,
+.year,
+.images {
+  margin-bottom: 10px;
+  /* Space between elements */
+  text-align: center;
+  /* Center text inside the box */
+  width: 300px;
+  /* Fixed width to make all boxes the same size */
+  padding: 10px;
+  /* Internal padding for better appearance */
+  box-sizing: border-box;
+  /* Ensures padding doesn’t increase the width */
+  border: 1px solid #ccc;
+  /* Light border for definition */
+  border-radius: 5px;
+  /* Rounded corners for smoother look */
 }

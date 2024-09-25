@@ -5,7 +5,7 @@ import { GuitarsPage } from './GuitarsPage'
 
 function App () { 
   return ( 
-    <div>
+    <div className='all'>
       <Header />
       <Footer />
       <GuitarsPage />

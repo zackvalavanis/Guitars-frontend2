@@ -1,7 +1,7 @@
 export function Header () { 
   return (
     <header>
-      <a href='#'>Home</a>
+      <a className='home' href='#'>Home</a>
     </header>
   );
 }

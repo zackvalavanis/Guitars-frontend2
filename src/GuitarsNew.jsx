@@ -5,20 +5,20 @@ export function GuitarsNew ( {onCreate}) {
     onCreate(params, () => event.target.reset());
   }
   return (
-    <div>
+    <div className="create">
       <h1>New Guitar</h1>
       <form onSubmit={guitarSubmit}>
         <div>
-          Name: <input id='name' name='name' type='text'></input>
+          Name: <input className='name' id='name' name='name' type='text'></input>
         </div>
         <div>
-          Price: <input id='price' name='price' type='text' />
+          Price: <input className='price' id='price' name='price' type='text' />
         </div>
         <div>
-          Year: <input id='year' name='year' type='text' />
+          Year: <input className='year' id='year' name='year' type='text' />
         </div>
         <div>
-          image: <input id='image' name='image' type='text' />
+          image: <input className='images' id='image' name='image' type='text' />
         </div>
         <button type='submit'>Create Post</button>
       </form>
